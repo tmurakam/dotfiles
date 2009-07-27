@@ -21,7 +21,7 @@
 ;; Font-Lock mode
 (global-font-lock-mode t)
 ;; Use fast-lock-mode to display faster.
-(setq font-lock-support-mode 'fast-lock-mode)
+;(setq font-lock-support-mode 'fast-lock-mode)
 
 ;; When new file that is not exist yet is opened, insert a template file.
 ;(add-hook 'find-file-hooks 'auto-insert)
