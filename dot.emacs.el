@@ -1,5 +1,5 @@
 ;; load all files in .emacs.d
-(let* ((dir "~/.emacs.d/init.d")
+(let* ((dir "~/dotfiles/emacs.d/init.d")
        (el-suffix "\\.el\\'")
        (files (mapcar
 	              (lambda (path) (replace-regexp-in-string el-suffix "" path))
