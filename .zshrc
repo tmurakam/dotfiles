@@ -11,9 +11,14 @@ fi
 
 fpath=(~/zsh/functions ${fpath})
 
+# 補完
 autoload -U compinit
 compinit
 zstyle ':completion:*' list-colors ''
+
+# 補完を無効化するコマンド
+compdef -d svn
+compdef -d git
 
 ##############################################################################
 # aliases
@@ -58,7 +63,11 @@ alias gf='global -xf'
 #alias xe='~/Morphon_XML-Editor_3.1.4/Morphon_XML-Editor_3.1.4'
 
 #eclipse
-alias eclipse='PATH=/usr/java/jre1.5.0_10/bin:$PATH /usr/local/eclipse/eclipse'
+export PATH=$PATH:/usr/java/jdk1.5.0_21/bin
+alias eclipse=/usr/local/eclipse/eclipse
+
+# android sdk
+export PATH=$PATH:/usr/local/android-sdk/tools
 
 alias firefox=/usr/local/firefox/firefox
 alias thunderbird=/usr/local/thunderbird/thunderbird
@@ -68,8 +77,8 @@ alias ng='emacs -nw'
 ##############################################################################
 
 # Locale
-export LANG=ja_JP.eucJP
-#export LANG=ja_JP.UTF-8
+#export LANG=ja_JP.eucJP
+export LANG=ja_JP.UTF-8
 #alias man="/home/tmurakam/bin/uman"
 
 # Prompt
@@ -104,6 +113,10 @@ setopt auto_cd
 setopt correct
 setopt list_packed
 
+# do not correct!
+alias gem='nocorrect gem'
+alias rails='nocorrect rails'
+
 #
 # enviroment variables
 #
@@ -113,8 +126,9 @@ export PAGER=less
 ulimit -c 100000000
 
 # proxy
-export http_proxy=http://proxy.spf.cl.nec.co.jp:3128/
-export ftp_proxy=http://proxy.spf.cl.nec.co.jp:3128/
+export http_proxy=http://proxygate2.nic.nec.co.jp:8080/
+export https_proxy=$http_proxy
+export ftp_proxy=$http_proxy
 
 export EDITOR="emacs -nw"
 export PAGER=less
@@ -143,15 +157,26 @@ PATH=$PATH:~/ns-2.31/bin:~/ns-2.31/tcl8.4.14/unix:~/ns-2.31/tk8.4.14/unix
 #PATH=$PATH:~/mannasim/bin
 
 # Java
-export JAVA_HOME=/usr/java/jdk1.5.0_05
+export JAVA_HOME=/usr/java/jdk1.5.0_21/
 
 # UNIZONE
 #export MOAPL_ROOT=/home/unizone/20070113UNZ_Av1000320-vcc
 export MOAPL_ROOT=/home/unizone/20070113UNZ_Av1000320
-export PATH=$PATH:~/bldwz
+export PATH=$PATH:/home/unizone/BuildWizard
 
 # OCEAN
 #
 #export MOAPL_ROOT=/home/ocean/20080524OCE_Av1000500
 #export MOAPL_ROOT=/home/kakumaru/ocean/20080524OCE_Av1000500/OCEAN
 #export PATH=$PATH:~/OCE_BW
+
+# Triton
+#export MOAPL_ROOT=/home/triton/Av1030100
+#export PATH=$PATH:/home/triton/BuildWizard
+
+# Android
+export TARGET=android
+export DROID_ROOT=/home/tmurakam/Android
+#export DROID_TARGET=dream
+#export DROID_TARGET=generic
+
