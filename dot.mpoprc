@@ -1,0 +1,15 @@
+defaults
+tls off
+delivery maildir ~/Maildir
+
+# accounts
+account mail.jp.nec.com
+auth user
+host mail.jp.nec.com
+user murakami@da.jp.nec.com
+password Aop238gK
+keep on
+
+# default account
+account default : mail.jp.nec.com
+
