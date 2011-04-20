@@ -4,7 +4,7 @@
 	  '(lambda ()
 	     (inf-ruby-keys)
 	     (setq tab-width 8)))
-(setq ruby-indent-level 4)
+(setq ruby-indent-level 2)
 
 ;; rubydb
 (autoload 'rubydb "rubydb3x"
