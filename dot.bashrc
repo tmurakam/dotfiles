@@ -36,7 +36,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -101,3 +101,29 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+#####################################################################
+# Environment variables
+
+ulimit -c 100000000
+
+export EDITOR="emacs -nw"
+export PAGER=less
+
+# proxy
+export http_proxy=http://proxygate2.nic.nec.co.jp:8080/
+export https_proxy=$http_proxy
+export ftp_proxy=$http_proxy
+
+# less for global
+export LESSGLOBALTAGS=global
+
+# Java
+#export JAVA_HOME=/usr/java/jdk1.5.0_21/
+
+# Android
+export TARGET=android
+export DROID_ROOT=/home/tmurakam/Android
+#export DROID_TARGET=dream
+#export DROID_TARGET=generic
+
