@@ -9,4 +9,4 @@ fi
 
 # keychain, see http://www.gentoo.org/doc/ja/keychain-guide.xml
 #
-#eval `/usr/bin/keychain --eval --timeout 28800`
+eval `/usr/bin/keychain --eval --timeout 28800`
