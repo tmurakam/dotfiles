@@ -38,7 +38,7 @@
 ;(auto-install-update-emacswiki-package-name t)
 
 ;; anything
-;(require 'anything)
+(defvar org-directory "")
 (require 'anything-startup)
 
 ;;;; M-x customize
