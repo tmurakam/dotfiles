@@ -12,7 +12,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Path
-export PATH=$PATH:/sbin:/usr/sbin:$HOME/devbin
+export PATH=$PATH:/sbin:/usr/sbin:$HOME/devbin:$HOME/bin
 
 # Locale
 export LANG=ja_JP.utf8
@@ -43,6 +43,7 @@ back()
 #    ls
 }
 
+up() { eval `~/dotfiles/upto $1`; }
 
 #
 # CVS

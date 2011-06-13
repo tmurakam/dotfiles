@@ -127,3 +127,7 @@ export DROID_ROOT=/home/tmurakam/Android
 #export DROID_TARGET=dream
 #export DROID_TARGET=generic
 
+export PATH=$PATH:~/Android/android-sdk-linux_x86/tools:~/Android/android-sdk-linux_x86/platform-tools
+# commands
+up() { eval `~/dotfiles/upto $1`; }
+

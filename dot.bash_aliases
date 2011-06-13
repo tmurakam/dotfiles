@@ -14,7 +14,7 @@ alias  a2ps='a2ps --encoding=euc-jp'
 alias  cs='/usr/local/bin/cs */*.[ch]* */*/*.[ch]* */*/*/*.[ch]* */*/*/*/*.[ch]*'
 alias ng='emacs -nw'
 
-alias make=gmake
+#alias make=gmake
 
 #alias  xdvi	xdvi -fg white -bg black
 
