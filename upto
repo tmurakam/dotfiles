@@ -1,0 +1,32 @@
+#!/usr/bin/ruby
+
+=begin
+ディレクトリを上に上がる
+
+設定:
+
+.bashrc などに以下のように記述し、up コマンドを使えるようにする。
+
+  up() { eval `~/dotfiles/upto $1`; }
+
+使い方:
+
+  $ up 3     - ディレクトリを3つ上がる
+  $ up src   - 'src' という名前のディレクトリまで上がる
+
+
+=end
+
+if (ARGV[0] =~ /(\d+)/)
+  cmdline = "cd "
+  1.upto($1.to_i) do
+    cmdline += "../"
+  end
+  puts cmdline
+
+else
+  pwd = Dir.pwd
+  if (pwd =~ /(^.*\/#{ARGV[0]}[^\/]*)\//)
+    puts "cd #{$1}"
+  end
+end
