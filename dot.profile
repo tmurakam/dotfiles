@@ -20,6 +20,7 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
 export LANG="ja_JP.utf8"
 
 # keychain, see http://www.gentoo.org/doc/ja/keychain-guide.xml

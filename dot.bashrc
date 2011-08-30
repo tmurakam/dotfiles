@@ -118,6 +118,10 @@ export ftp_proxy=$http_proxy
 # less for global
 export LESSGLOBALTAGS=global
 
+# Ruby enterprise edition
+#export PATH=/opt/ruby-enterprise-1.8.7-2011.03/bin:$PATH
+#  note: use rvm now...
+
 # Java
 #export JAVA_HOME=/usr/java/jdk1.5.0_21/
 
