@@ -38,8 +38,8 @@
 ;(auto-install-update-emacswiki-package-name t)
 
 ;; anything
-(defvar org-directory "")
-(require 'anything-startup)
+;(defvar org-directory "")
+;(require 'anything-startup)
 
 ;;;; M-x customize
 (custom-set-variables
