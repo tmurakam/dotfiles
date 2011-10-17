@@ -41,6 +41,9 @@
 ;(defvar org-directory "")
 ;(require 'anything-startup)
 
+;; magit (git frontend)
+(require 'magit)
+
 ;;;; M-x customize
 (custom-set-variables
   ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
