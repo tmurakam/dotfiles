@@ -110,12 +110,17 @@ ulimit -c 100000000
 export EDITOR="emacs -nw"
 export PAGER=less
 
-# proxy
+# proxy (for wget)
 export http_proxy=http://proxygate2.nic.nec.co.jp:8080/
 export https_proxy=$http_proxy
 export ftp_proxy=$http_proxy
-export HTTP_PROXY=$http_proxy
+export no_proxy=.nec.co.jp,.nec.com
+
+# for curl
 export HTTPS_PROXY=$http_proxy
+export FTP_PROXY=$http_proxy
+export ALL_PROXY=$http_proxy
+export NO_PROXY=$no_proxy
 
 # less for global
 export LESSGLOBALTAGS=global
