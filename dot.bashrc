@@ -114,6 +114,8 @@ export PAGER=less
 export http_proxy=http://proxygate2.nic.nec.co.jp:8080/
 export https_proxy=$http_proxy
 export ftp_proxy=$http_proxy
+export HTTP_PROXY=$http_proxy
+export HTTPS_PROXY=$http_proxy
 
 # less for global
 export LESSGLOBALTAGS=global
@@ -121,6 +123,11 @@ export LESSGLOBALTAGS=global
 # Ruby enterprise edition
 #export PATH=/opt/ruby-enterprise-1.8.7-2011.03/bin:$PATH
 #  note: use rvm now...
+
+# RVM
+if [ -s /usr/local/rvm/scripts/rvm ]; then
+   source /usr/local/rvm/scripts/rvm
+fi
 
 # Java
 #export JAVA_HOME=/usr/java/jdk1.5.0_21/
@@ -131,7 +138,9 @@ export DROID_ROOT=/home/tmurakam/Android
 #export DROID_TARGET=dream
 #export DROID_TARGET=generic
 
-export PATH=$PATH:~/Android/android-sdk-linux_x86/tools:~/Android/android-sdk-linux_x86/platform-tools
+export ANDROID_HOME=~/android-sdk-linux
+export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+
 # commands
 up() { eval `~/dotfiles/upto $1`; }
 
