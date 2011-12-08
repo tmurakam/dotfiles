@@ -50,9 +50,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -111,7 +111,12 @@ export EDITOR="emacs -nw"
 export PAGER=less
 
 # proxy (for wget)
-export http_proxy=http://proxygate2.nic.nec.co.jp:8080/
+if [ -e $HOME/.proxy_server ]; then
+    export http_proxy=`cat $HOME/.proxy_server`
+else
+    export http_proxy=http://proxygate2.nic.nec.co.jp:8080/
+fi
+
 export https_proxy=$http_proxy
 export ftp_proxy=$http_proxy
 export no_proxy=.nec.co.jp,.nec.com
@@ -130,9 +135,7 @@ export LESSGLOBALTAGS=global
 #  note: use rvm now...
 
 # RVM
-if [ -s /usr/local/rvm/scripts/rvm ]; then
-   source /usr/local/rvm/scripts/rvm
-fi
+[[ -s "/home/tmurakam/.rvm/scripts/rvm" ]] && source "/home/tmurakam/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 # Java
 #export JAVA_HOME=/usr/java/jdk1.5.0_21/
