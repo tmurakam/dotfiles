@@ -115,3 +115,4 @@ ulimit -c 100000000
 
 # less for global
 export LESSGLOBALTAGS=global
+
