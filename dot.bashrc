@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -28,52 +30,39 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+#
+# Set Prompt
+#
+# Note: \u - username, \h - hostname, \w - current dir, \n - newline
+# \a - bell, \e - escape (\033), \[ and \] - non display sequence
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
+function set_prompt
+{
+    local GREEN="\[\e[0;32m\]"
+    local LRED="\[\e[1;31m\]"
+    local LBLUE="\[\e[1;34m\]"
+    local LCYAN="\[\e[1;36m\]"
+    local LPURPLE="\[\e[1;35m\]"
+    local YELLOW="\[\e[1;33m\]"
+    local ENDCOLOR="\[\e[00m\]"
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+    # My Prompt
+    PS1="\n${GREEN}\u@\h${ENDCOLOR}:${LCYAN}\w${ENDCOLOR}\n\$ "
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+    # Ubuntu
+    #PS1="${GREEN}\u@\h${ENDCOLOR}:${LBLUE}\w${ENDCOLOR}\$ "
+    #PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+ 
+    # CYGWIN Prompt
+    #PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+}
 
-# Prompt
-#export PROMPT="%B%{${fg[blue]}%}[%T]%n@%m %%%{${reset_color}%}%b "
-#export RPROMPT="%B%{${fg[red]}%}[%~]%{${reset_color}%}%b "
-#export PROMPT2="%_%%"
+set_prompt
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -111,7 +100,7 @@ export LANG=ja_JP.UTF-8
 case "${TERM}" in
 kterm*|xterm)
     precmd() {
-        echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+        echo -ne "\e]0;${USER}@${HOST%%.*}:${PWD}\007"
     }
     ;;
 esac 
