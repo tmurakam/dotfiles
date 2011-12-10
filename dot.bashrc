@@ -94,7 +94,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Locale
-export LANG=ja_JP.UTF-8
+#export LANG=ja_JP.UTF-8
 
 # Show current directory to terminal
 case "${TERM}" in
@@ -111,8 +111,20 @@ esac
 export EDITOR="emacs -nw"
 export PAGER=less
 
-ulimit -c 100000000
+#ulimit -c 100000000
+
+if [ -d "$HOME/bin" ]; then
+   PATH=$HOME/bin:$PATH
+fi
 
 # less for global
 export LESSGLOBALTAGS=global
 
+# Android SDK
+export ANDROID_HOME=$HOME/android-sdk-linux
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# RVM
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
+   source "$HOME/.rvm/scripts/rvm"
+fi
