@@ -136,7 +136,7 @@
           '(lambda ()
              (inf-ruby-keys)
              (setq tab-width 8)))
-(setq ruby-indent-level 4)
+(setq ruby-indent-level 2)
 
 (autoload 'rubydb "rubydb3x"
   "run rubydb on program file in buffer *gud-file*.
