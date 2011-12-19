@@ -130,25 +130,15 @@ export NO_PROXY=$no_proxy
 # less for global
 export LESSGLOBALTAGS=global
 
-# Ruby enterprise edition
-#export PATH=/opt/ruby-enterprise-1.8.7-2011.03/bin:$PATH
-#  note: use rvm now...
-
 # RVM
-[[ -s "/home/tmurakam/.rvm/scripts/rvm" ]] && source "/home/tmurakam/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 # Java
 #export JAVA_HOME=/usr/java/jdk1.5.0_21/
 
 # Android
-export TARGET=android
-export DROID_ROOT=/home/tmurakam/Android
-#export DROID_TARGET=dream
-#export DROID_TARGET=generic
-
 export ANDROID_HOME=~/android-sdk-linux
 export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 # commands
 up() { eval `~/dotfiles/upto $1`; }
-
