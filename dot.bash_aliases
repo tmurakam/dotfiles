@@ -2,6 +2,10 @@
 # aliases
 #
 
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 alias rm='rm -i'
 alias rm~='/bin/rm *~'
 alias cp='cp -i'

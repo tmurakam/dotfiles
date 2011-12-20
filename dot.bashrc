@@ -1,6 +1,13 @@
+#!/bin/bash
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -23,47 +30,34 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
+#
+# Set Prompt
+#
+# Note: \u - username, \h - hostname, \w - current dir, \n - newline
+# \a - bell, \e - escape (\033), \[ and \] - non display sequence
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
+function set_prompt
+{
+    local GREEN="\[\e[0;32m\]"
+    local LRED="\[\e[1;31m\]"
+    local LBLUE="\[\e[1;34m\]"
+    local LCYAN="\[\e[1;36m\]"
+    local LPURPLE="\[\e[1;35m\]"
+    local YELLOW="\[\e[1;33m\]"
+    local ENDCOLOR="\[\e[00m\]"
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-force_color_prompt=yes
+    # My Prompt
+    PS1="\n${GREEN}\u@\h${ENDCOLOR}:${LCYAN}\w${ENDCOLOR}\n\$ "
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
+    # Ubuntu
+    #PS1="${GREEN}\u@\h${ENDCOLOR}:${LBLUE}\w${ENDCOLOR}\$ "
+    #PS1="\[\e]0;\u@\h: \w\a\]$PS1"
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
-fi
-unset color_prompt force_color_prompt
+    # CYGWIN Prompt
+    #PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+}
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+set_prompt
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -77,20 +71,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -110,35 +91,46 @@ ulimit -c 100000000
 export EDITOR="emacs -nw"
 export PAGER=less
 
-# proxy (for wget)
-if [ -e $HOME/.proxy_server ]; then
-    export http_proxy=`cat $HOME/.proxy_server`
-else
-    export http_proxy=http://proxygate2.nic.nec.co.jp:8080/
-fi
+# set proxy
+function set-proxy
+{
+    if [ $# -ne 0 ]; then
+        export http_proxy=$1
+    elif [ -e $HOME/.proxy_server ]; then
+        export http_proxy=`cat $HOME/.proxy_server`
+    else
+        export http_proxy=http://proxygate2.nic.nec.co.jp:8080/
+    fi
 
-export https_proxy=$http_proxy
-export ftp_proxy=$http_proxy
-export no_proxy=.nec.co.jp,.nec.com
+    export https_proxy=$http_proxy
+    export ftp_proxy=$http_proxy
+    export no_proxy=.nec.co.jp,.nec.com
 
-# for curl
-export HTTPS_PROXY=$http_proxy
-export FTP_PROXY=$http_proxy
-export ALL_PROXY=$http_proxy
-export NO_PROXY=$no_proxy
+    # for curl
+    export HTTPS_PROXY=$http_proxy
+    export FTP_PROXY=$http_proxy
+    export ALL_PROXY=$http_proxy
+    export NO_PROXY=$no_proxy
+}
+
+set-proxy
 
 # less for global
 export LESSGLOBALTAGS=global
 
 # RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
+    . "$HOME/.rvm/scripts/rvm"
+fi
 
 # Java
 #export JAVA_HOME=/usr/java/jdk1.5.0_21/
 
 # Android
-export ANDROID_HOME=~/android-sdk-linux
-export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+if [ -d $HOME/android-sdk-linux ]; then
+    export ANDROID_HOME=$HOME/android-sdk-linux
+    export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+fi
 
 # commands
 up() { eval `~/dotfiles/upto $1`; }
