@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -25,4 +27,6 @@ export LANG="ja_JP.utf8"
 
 # keychain, see http://www.gentoo.org/doc/ja/keychain-guide.xml
 #
-eval `/usr/bin/keychain --eval --timeout 28800`
+if [ -x /usr/bin/keychain ]; then
+   eval `/usr/bin/keychain --eval --timeout 28800`
+fi
