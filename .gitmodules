@@ -1,3 +1,6 @@
 [submodule "emacs.d/rhtml"]
 	path = emacs.d/rhtml
 	url = https://github.com/eschulte/rhtml.git
+[submodule "emacs.d/rinari"]
+	path = emacs.d/rinari
+	url = git://github.com/eschulte/rinari.git
