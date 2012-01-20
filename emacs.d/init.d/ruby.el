@@ -1,5 +1,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ruby
+(add-to-load-path "lisp/rinari" "lisp/rhtml")
+
+;; Interactive Do Things
+;(require 'ido)
+;(ido-mode t)
+
+;; Rinari
+(require 'rinari)
+
+;; RHTML mode (.erb etc)
+(require 'rhtml-mode)
+(add-hook 'rhtml-mode-hook (lambda () (rinari-launch)))
+
+;; ruby mode
 (add-hook 'ruby-mode-hook
 	  '(lambda ()
 	     (inf-ruby-keys)

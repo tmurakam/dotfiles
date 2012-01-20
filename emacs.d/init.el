@@ -19,7 +19,6 @@
 
 ;; Emacs Lisp のPathを通す
 (add-to-load-path "lisp" "local-lisp" "auto-install" "private" "init.d")
-(add-to-load-path "rinari")
 
 ;; load all files in .init.d
 (let* ((dir (concat user-emacs-directory "init.d"))
@@ -44,8 +43,6 @@
 
 ;; magit (git frontend)
 ;(require 'magit)
-
-(require 'rinari)
 
 ;;;; M-x customize
 (custom-set-variables
