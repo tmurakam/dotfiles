@@ -113,3 +113,7 @@ fi
 
 # commands
 up() { eval `~/dotfiles/upto $1`; }
+
+if [ -f $HOME/.bashrc_local ]; then
+    . $HOME/.bashrc_local
+fi
