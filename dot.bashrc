@@ -9,8 +9,19 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# If not running interactively, don't do anything
+# set proxy
+. $HOME/dotfiles/set-proxy.sh
+
+# RVM
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
+    . "$HOME/.rvm/scripts/rvm"
+fi
+
+# Inteactive shell でなければ、ここで終了
 [ -z "$PS1" ] && return
+
+#######################################################################
+# 以下は Interactive shell の場合の設定
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -91,16 +102,8 @@ ulimit -c 100000000
 export EDITOR="emacs -nw"
 export PAGER=less
 
-# set proxy
-. $HOME/dotfiles/set-proxy.sh
-
 # less for global
 export LESSGLOBALTAGS=global
-
-# RVM
-if [ -s "$HOME/.rvm/scripts/rvm" ]; then
-    . "$HOME/.rvm/scripts/rvm"
-fi
 
 # Java
 #export JAVA_HOME=/usr/java/jdk1.5.0_21/
