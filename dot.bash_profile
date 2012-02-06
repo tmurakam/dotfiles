@@ -7,6 +7,9 @@ if [ -f "$HOME/.bashrc" ]; then
    . "$HOME/.bashrc"
 fi
 
+# MacPorts
+#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
 umask 022
 
 stty erase ^H

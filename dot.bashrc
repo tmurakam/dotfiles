@@ -76,6 +76,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+if [ `uname` == 'Darwin' ]; then
+    alias ls='ls -G'
+fi
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -121,8 +124,10 @@ fi
 export LESSGLOBALTAGS=global
 
 # Android SDK
-export ANDROID_HOME=$HOME/android-sdk-linux
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+if [ -e $HOME/android-sdk ]; then
+    export ANDROID_HOME=$HOME/android-sdk
+    export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+fi
 
 # RVM
 if [ -s "$HOME/.rvm/scripts/rvm" ]; then

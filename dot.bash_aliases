@@ -9,7 +9,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # user defines aliases
 #
-alias ls='ls -FC --color=auto'
+#alias ls='ls -FC --color=auto'
 alias rm='rm -i'
 alias rm~='/bin/rm *~'
 alias cp='cp -i'
