@@ -4,6 +4,7 @@
   (set-face-foreground 'modeline "yellow")
   (set-face-background 'modeline "navy")
   (set-scroll-bar-mode 'right)
+  (tool-bar-mode -1)
   (setq 
    ;;tool-bar-mode nil			;; Remove toolbar in Emacs-21
    default-frame-alist '(append
@@ -13,5 +14,4 @@
 			  ;;(height . 25)
 			  default-frame-alist)))))
 
-(tool-bar-mode -1)
 (menu-bar-mode -1)
