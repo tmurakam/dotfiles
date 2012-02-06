@@ -25,7 +25,7 @@
 (setq auto-install-directory (concat user-emacs-directory "auto-install"))
 (setq url-proxy-services '(("http" . "proxygate2.nic.nec.co.jp:8080")))
 (auto-install-compatibility-setup)
-(auto-install-update-emacswiki-package-name t)
+;(auto-install-update-emacswiki-package-name t)
 
 ;; load all files in .init.d
 (let* ((dir (concat user-emacs-directory "init.d"))
