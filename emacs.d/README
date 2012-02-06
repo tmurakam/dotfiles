@@ -1,3 +1,18 @@
+設定
+===
+
+以下を実施しておくこと。
+
+  $ cd ~/dotfiles
+  $ git submodule init
+  $ git submodule update
+  $ cd emacs.d/lisp/rinari
+  $ git submodule init
+  $ git submodule update
+
+これをしないと必要な lisp がインストールされずエラーになる。
+
+
 メモ
 ====
 
