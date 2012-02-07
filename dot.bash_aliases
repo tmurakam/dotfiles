@@ -24,3 +24,6 @@ alias gx='global -x'
 alias gr='global -xr'
 alias gg='global -xg'
 alias gf='global -xf'
+
+# git
+alias glg='git log --graph --date=iso --pretty=format:"%h [%ad] %s %Cred%d%Creset"'
