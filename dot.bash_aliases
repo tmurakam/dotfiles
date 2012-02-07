@@ -18,8 +18,8 @@ alias grep='grep -i'
 
 #alias  xdvi	xdvi -fg white -bg black
 
-alias tounix='qkc -e -u'
-alias todos='qkc -s -m'
+alias tounix='nkf -w -Lu -d --in-place'
+alias todos='nkf -s -Lw -c --in-place'
 
 # global
 alias gx='global -x'
@@ -33,3 +33,6 @@ alias gf='global -xf'
 
 alias ng='emacs -nw'
 alias euc2utf8='iconv -f euc-jp -t utf-8'
+
+# git
+alias glg='git log --graph --date=iso --pretty=format:"%h [%ad] %s %Cred%d%Creset"'
