@@ -115,21 +115,7 @@ export EDITOR="emacs -nw"
 export PAGER=less
 
 #ulimit -c 100000000
-
-if [ -d "$HOME/bin" ]; then
-   PATH=$HOME/bin:$PATH
-fi
-
+   
 # less for global
 export LESSGLOBALTAGS=global
 
-# Android SDK
-if [ -e $HOME/android-sdk ]; then
-    export ANDROID_HOME=$HOME/android-sdk
-    export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-fi
-
-# RVM
-if [ -s "$HOME/.rvm/scripts/rvm" ]; then
-   source "$HOME/.rvm/scripts/rvm"
-fi

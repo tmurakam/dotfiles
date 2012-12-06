@@ -14,7 +14,24 @@ umask 022
 
 stty erase ^H
 
-if [ -e /usr/bin/keychain ]; then
-   eval `/usr/bin/keychain --eval --timeout 28800`
+if [ -d "$HOME/bin" ]; then
+   PATH=$HOME/bin:$PATH
 fi
+
+# Android SDK
+if [ -e $HOME/android-sdk ]; then
+    export ANDROID_HOME=$HOME/android-sdk
+    export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+fi
+
+# RVM
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
+   source "$HOME/.rvm/scripts/rvm"
+fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+#if [ -e /usr/bin/keychain ]; then
+#   eval `/usr/bin/keychain --eval --timeout 28800`
+#fi
 
