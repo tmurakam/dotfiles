@@ -6,11 +6,20 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
+fi
+
+# RVM
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
+   source "$HOME/.rvm/scripts/rvm"
+elif [ -s /etc/profile.d/rvm.sh ]; then
+   source /etc/profile.d/rvm.sh
 fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+#########################################################################
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -118,4 +127,3 @@ export PAGER=less
    
 # less for global
 export LESSGLOBALTAGS=global
-

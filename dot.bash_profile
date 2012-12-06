@@ -24,14 +24,6 @@ if [ -e $HOME/android-sdk ]; then
     export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
 
-# RVM
-if [ -s "$HOME/.rvm/scripts/rvm" ]; then
-   source "$HOME/.rvm/scripts/rvm"
+if [ -e /usr/bin/keychain ]; then
+   eval `/usr/bin/keychain --eval --timeout 28800`
 fi
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-#if [ -e /usr/bin/keychain ]; then
-#   eval `/usr/bin/keychain --eval --timeout 28800`
-#fi
-
