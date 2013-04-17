@@ -20,4 +20,16 @@ function set-proxy
     export NO_PROXY=$no_proxy
 }
 
+function unset-proxy
+{
+    unset http_proxy
+    unset https_proxy
+    unset ftp_proxy
+    unset no_proxy
+    unset HTTPS_PROXY
+    unset FTP_PROXY
+    unset ALL_PROXY
+    unset NO_PROXY
+}
+
 set-proxy
