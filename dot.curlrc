@@ -1,0 +1,4 @@
+-v
+#--proxy server:port
+insecure
+

@@ -1,6 +1,6 @@
-[submodule "emacs.d/lisp/rinari"]
-	path = emacs.d/lisp/rinari
+[submodule "dot.emacs.d/elisp/rinari"]
+	path = dot.emacs.d/elisp/rinari
 	url = https://github.com/eschulte/rinari.git
-[submodule "emacs.d/lisp/rhtml"]
-	path = emacs.d/lisp/rhtml
+[submodule "dot.emacs.d/elisp/rhtml"]
+	path = dot.emacs.d/elisp/rhtml
 	url = https://github.com/eschulte/rhtml.git

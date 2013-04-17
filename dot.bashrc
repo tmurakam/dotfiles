@@ -14,14 +14,27 @@ fi
 
 # RVM
 if [ -s "$HOME/.rvm/scripts/rvm" ]; then
-    . "$HOME/.rvm/scripts/rvm"
+   source "$HOME/.rvm/scripts/rvm"
+elif [ -s /etc/profile.d/rvm.sh ]; then
+   source /etc/profile.d/rvm.sh
 fi
 
-# Inteactive shell でなければ、ここで終了
+# rbenv
+RBENV_ROOT=dummy
+if [ -d "$HOME/.rbenv/bin" ]; then
+    export RBENV_ROOT=$HOME/.rbenv
+elif [ -d "/usr/local/rbenv" ]; then
+    export RBENV_ROOT=/usr/local/rbenv
+fi
+if [ -d $RBENV_ROOT ]; then
+    export PATH=$RBENV_ROOT/bin:$PATH
+    eval "$(rbenv init -)"
+fi
+
+# If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-#######################################################################
-# 以下は Interactive shell の場合の設定
+#########################################################################
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -40,6 +53,11 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
 
 #
 # Set Prompt
@@ -88,6 +106,10 @@ if [ `uname` == "Darwin" ]; then
 fi
 
 # Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -102,17 +124,6 @@ fi
 #####################################################################
 # Environment variables
 
-ulimit -c 100000000
-
-export EDITOR="emacs -nw"
-export PAGER=less
-
-# less for global
-export LESSGLOBALTAGS=global
-
-# Java
-#export JAVA_HOME=/usr/java/jdk1.5.0_21/
-
 # Android
 if [ -d $HOME/android-sdk-linux ]; then
     export ANDROID_HOME=$HOME/android-sdk-linux
@@ -125,3 +136,21 @@ up() { eval `~/dotfiles/upto $1`; }
 if [ -f $HOME/.bashrc_local ]; then
     . $HOME/.bashrc_local
 fi
+
+# Show current directory to terminal
+case "${TERM}" in
+kterm*|xterm)
+    precmd() {
+        echo -ne "\e]0;${USER}@${HOST%%.*}:${PWD}\007"
+    }
+    ;;
+esac 
+
+# enviroment variables
+export EDITOR="emacs -nw"
+export PAGER=less
+
+#ulimit -c 100000000
+   
+# less for global
+export LESSGLOBALTAGS=global
