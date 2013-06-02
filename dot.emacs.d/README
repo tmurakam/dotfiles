@@ -3,10 +3,12 @@
 
 以下を実施しておくこと。
 
-  $ cd ~/.emacs.d
+  $ ln -s ~/dotfiles/dot.emacs.d ~/.emacs.d
+  $ touch ~/dotfiles/dot.emacs.d/init_local.el
+  $ cd ~/dotfiles
   $ git submodule init
   $ git submodule update
-  $ cd elisp/rinari
+  $ cd dot.emacs.d/elisp/rinari
   $ git submodule init
   $ git submodule update
 
