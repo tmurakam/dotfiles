@@ -27,3 +27,6 @@ fi
 if [ -e /usr/bin/keychain ]; then
    eval `/usr/bin/keychain --eval --timeout 28800`
 fi
+
+# RVM
+. $HOME/dotfiles/init-rvm.sh
