@@ -141,4 +141,4 @@ export PAGER=less
 export LESSGLOBALTAGS=global
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/home/tmurakam/.gvm/bin/gvm-init.sh" ]] && source "/home/tmurakam/.gvm/bin/gvm-init.sh"
+[[ -s "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
