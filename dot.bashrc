@@ -16,6 +16,9 @@ fi
 
 #. $HOME/dotfiles/init-rvm.sh
 
+# gvm
+[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -140,5 +143,3 @@ export PAGER=less
 # less for global
 export LESSGLOBALTAGS=global
 
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
