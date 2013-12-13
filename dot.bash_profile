@@ -30,3 +30,6 @@ fi
 
 # RVM
 . $HOME/dotfiles/init-rvm.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/home/tmurakam/.gvm/bin/gvm-init.sh" ]] && source "/home/tmurakam/.gvm/bin/gvm-init.sh"
