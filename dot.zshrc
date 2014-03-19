@@ -63,7 +63,7 @@ alias gf='global -xf'
 #alias xe='~/Morphon_XML-Editor_3.1.4/Morphon_XML-Editor_3.1.4'
 
 #eclipse
-export PATH=$PATH:/usr/java/jdk1.5.0_21/bin
+#export PATH=$PATH:/usr/java/jdk1.5.0_21/bin
 alias eclipse=/usr/local/eclipse/eclipse
 
 # android sdk

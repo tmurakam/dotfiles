@@ -143,3 +143,5 @@ export PAGER=less
 # less for global
 export LESSGLOBALTAGS=global
 
+# GVM
+[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
