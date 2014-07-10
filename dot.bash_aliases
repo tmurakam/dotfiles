@@ -36,3 +36,5 @@ alias euc2utf8='iconv -f euc-jp -t utf-8'
 
 # git
 alias glg='git log --graph --date=iso --pretty=format:"%h [%ad] %s %Cred%d%Creset"'
+alias gsa='git for-each-ref --format "%(refname:short) %(upstream:trackshort)" refs/heads'
+
