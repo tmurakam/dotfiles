@@ -1,7 +1,7 @@
 defencoding utf-8
 
 # prefix key
-escape ^Ww
+escape ^j^j
 
 # do not show startup screen
 startup_message off
