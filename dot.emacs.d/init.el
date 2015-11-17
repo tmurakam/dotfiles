@@ -18,7 +18,7 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 
 ;; Emacs Lisp のPathを通す
-(add-to-load-path "elisp" "auto-install" "init.d" ".")
+(add-to-load-path "elisp" "auto-install" "init.d" "init")
 
 ;; ライブラリがあれば autoload する関数
 (defun autoload-if-found (function file &optional docstring interactive type)
