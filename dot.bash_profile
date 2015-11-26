@@ -28,12 +28,21 @@ if [ -e /usr/bin/keychain ]; then
    eval `/usr/bin/keychain --eval --timeout 28800`
 fi
 
+# anyenv
+if [ -e $HOME/.anyenv ]; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+fi
+
 # RVM
 . $HOME/dotfiles/init-rvm.sh
 
 # nvm
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+# sdkman
+SDKMAN_DIR="$HOME/.sdkman"
+if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
+    export SDKMAN_DIR
+    source "$SDKMAN_DIR/bin/sdkman-init.sh"
+fi
