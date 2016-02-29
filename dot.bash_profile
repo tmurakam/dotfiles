@@ -29,20 +29,23 @@ if [ -e /usr/bin/keychain ]; then
 fi
 
 # anyenv
-if [ -e $HOME/.anyenv ]; then
-    export PATH="$HOME/.anyenv/bin:$PATH"
-    eval "$(anyenv init -)"
-fi
+#if [ -e $HOME/.anyenv ]; then
+#    export PATH="$HOME/.anyenv/bin:$PATH"
+#    eval "$(anyenv init -)"
+#fi
 
 # RVM
 . $HOME/dotfiles/init-rvm.sh
+
+# rbenv
+if [ -e $HOME/.rbenv ]; then
+    export PATH=$HOME/.rbenv/bin:$PATH
+    eval "$(rbenv init -)"
+fi
 
 # nvm
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 
 # sdkman
-SDKMAN_DIR="$HOME/.sdkman"
-if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]; then
-    export SDKMAN_DIR
-    source "$SDKMAN_DIR/bin/sdkman-init.sh"
-fi
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
