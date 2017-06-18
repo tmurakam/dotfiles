@@ -21,7 +21,7 @@ fi
 # Android SDK
 if [ -e $HOME/android-sdk ]; then
     export ANDROID_HOME=$HOME/android-sdk
-    export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+    export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 fi
 
 if [ -e /usr/bin/keychain ]; then
