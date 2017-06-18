@@ -25,6 +25,12 @@
   (and (locate-library file)
        (autoload function file docstring interactive type)))
 
+;; system dependent configs
+(if (featurep 'meadow)
+    (load "init_meadow")
+  (load "init_linux")
+)
+
 ;; load all files in .init.d
 (let* ((dir (concat user-emacs-directory "init.d"))
        (el-suffix "\\.el\\'")
@@ -34,12 +40,6 @@
   (while files
     (load (car files))
     (setq files (cdr files))))
-
-;; system dependent configs
-(if (featurep 'meadow)
-    (load "init_meadow")
-  (load "init_linux")
-)
 
 ;; custom-file
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
