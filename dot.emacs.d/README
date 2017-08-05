@@ -1,14 +1,14 @@
-設定
-===
-
-以下を実施しておくこと。
-
-  $ ln -s ~/dotfiles/dot.emacs.d ~/.emacs.d
-  $ touch ~/dotfiles/dot.emacs.d/init_local.el
-  $ cd ~/dotfiles
+インストール手順
+================
+  
+  $ cd ~
+  $ git clone git@bitbucket.org:tmurakam/dot.emacs.d.git
+  $ mv dot.emacs.d .emacs.d
+  $ cd .emacs.d
+  $ touch init_local.el
   $ git submodule init
   $ git submodule update
-  $ cd dot.emacs.d/elisp/rinari
+  $ cd elisp/rinari
   $ git submodule init
   $ git submodule update
 
