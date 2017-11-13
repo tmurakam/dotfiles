@@ -121,13 +121,13 @@ if [ -f $HOME/.bashrc_local ]; then
 fi
 
 # Show current directory to terminal
-case "${TERM}" in
-kterm*|xterm)
-    precmd() {
-        echo -ne "\e]0;${USER}@${HOST%%.*}:${PWD}\007"
-    }
-    ;;
-esac 
+#case "${TERM}" in
+#kterm*|xterm)
+#    precmd() {
+#        echo -ne "\e]0;${USER}@${HOST%%.*}:${PWD}\007"
+#    }
+#    ;;
+#esac 
 
 # enviroment variables
 export EDITOR="emacs -nw"

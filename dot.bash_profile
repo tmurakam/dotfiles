@@ -51,11 +51,22 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # pyenv
-if [ -e $HOME/.pyenv ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH=$PYENV_ROOT/bin:$PATH
-    eval "$(pyenv init -)"
+#if [ -e $HOME/.pyenv ]; then
+#    export PYENV_ROOT="$HOME/.pyenv"
+#    export PATH=$PYENV_ROOT/bin:$PATH
+#    eval "$(pyenv init -)"
+#fi
+
+# venv
+if [ -e $HOME/.venv/default ]; then
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    . $HOME/.venv/default/bin/activate
 fi
+
+#if [ -e $HOME/virtualenv/default ]; then
+#    export VIRTUAL_ENV_DISABLE_PROMPT=1
+#    . $HOME/virtualenv/default/bin/activate
+#fi
 
 # iTerm2 plugin
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
