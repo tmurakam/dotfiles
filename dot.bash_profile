@@ -70,3 +70,7 @@ fi
 
 # iTerm2 plugin
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# Go
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
