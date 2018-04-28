@@ -74,3 +74,6 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 # Go
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+
+# Jabba
+[ -s "/Users/tmurakam/.jabba/jabba.sh" ] && source "/Users/tmurakam/.jabba/jabba.sh"
