@@ -76,7 +76,7 @@ export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
 # Jabba
-[ -s "/Users/tmurakam/.jabba/jabba.sh" ] && source "/Users/tmurakam/.jabba/jabba.sh"
+[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 # jenv
 if [ -e $HOME/.jenv ]; then
