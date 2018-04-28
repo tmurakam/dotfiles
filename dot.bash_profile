@@ -76,4 +76,10 @@ export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
 # Jabba
-[ -s "/Users/tmurakam/.jabba/jabba.sh" ] && source "/Users/tmurakam/.jabba/jabba.sh"
+#[ -s "/Users/tmurakam/.jabba/jabba.sh" ] && source "/Users/tmurakam/.jabba/jabba.sh"
+
+# jenv
+if [ -e $HOME/.jenv ]; then
+    export PATH=$HOME/.jenv/bin:$PATH
+    eval "$(jenv init -)"
+fi
