@@ -50,15 +50,10 @@ fi
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-# pyenv
-#if [ -e $HOME/.pyenv ]; then
-#    export PYENV_ROOT="$HOME/.pyenv"
-#    export PATH=$PYENV_ROOT/bin:$PATH
-#    eval "$(pyenv init -)"
-#fi
-
-# venv
-if [ -e $HOME/.venv/default ]; then
+# pyenv / venv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+elif [ -e $HOME/.venv/default ]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     . $HOME/.venv/default/bin/activate
 fi
