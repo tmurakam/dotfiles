@@ -62,6 +62,10 @@ elif [ -e $HOME/.venv/default ]; then
     . $HOME/.venv/default/bin/activate
 fi
 
+# pipenv
+export PIPENV_VENV_IN_PROJECT=true
+
+
 #if [ -e $HOME/virtualenv/default ]; then
 #    export VIRTUAL_ENV_DISABLE_PROMPT=1
 #    . $HOME/virtualenv/default/bin/activate
