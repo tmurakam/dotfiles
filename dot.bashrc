@@ -146,3 +146,6 @@ export PAGER=less
    
 # less for global
 export LESSGLOBALTAGS=global
+
+# Jabba
+[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
