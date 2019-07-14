@@ -180,3 +180,5 @@ export DROID_ROOT=/home/tmurakam/Android
 #export DROID_TARGET=dream
 #export DROID_TARGET=generic
 
+
+[ -s "/Users/tmurakam/.jabba/jabba.sh" ] && source "/Users/tmurakam/.jabba/jabba.sh"
