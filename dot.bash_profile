@@ -91,3 +91,8 @@ if [ -e $HOME/.jenv ]; then
     export PATH=$HOME/.jenv/bin:$PATH
     eval "$(jenv init -)"
 fi
+
+# Rust
+if [ -e $HOME/.cargo ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
