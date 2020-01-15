@@ -151,4 +151,4 @@ export LESSGLOBALTAGS=global
 [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 # kubectl
-[ -s "/usr/local/bin/kubectl" ] && source <(kubectl completion bash)
+[ -s "/usr/local/bin/kubectl" -o -s "/usr/bin/kubectl" ] && source <(kubectl completion bash)
