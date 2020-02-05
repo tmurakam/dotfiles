@@ -59,7 +59,7 @@ function set_prompt
     local ENDCOLOR="\[\e[00m\]"
 
     # My Prompt
-    PS1="\n${GREEN}\u@\h${ENDCOLOR}:${LCYAN}\w${ENDCOLOR}\n\$ "
+    PS1="${GREEN}\u@\h${ENDCOLOR}:${LCYAN}\w${ENDCOLOR}\n\$ "
 
     # Ubuntu
     #PS1="${GREEN}\u@\h${ENDCOLOR}:${LBLUE}\w${ENDCOLOR}\$ "
@@ -151,4 +151,13 @@ export LESSGLOBALTAGS=global
 [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 # kubectl
-[ -s "/usr/local/bin/kubectl" -o -s "/usr/bin/kubectl" ] && source <(kubectl completion bash)
+if [ -s "/usr/local/bin/kubectl" ]; then
+    source <(kubectl completion bash)
+    alias k=kubectl
+    complete -o default -F __start_kubectl k
+fi
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

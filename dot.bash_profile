@@ -48,9 +48,6 @@ elif [ -x "/usr/local/bin/rbenv" ]; then # homebrew
     eval "$(rbenv init -)"
 fi
 
-# nvm
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
-
 # sdkman
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"

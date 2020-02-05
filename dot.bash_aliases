@@ -42,3 +42,6 @@ alias gsa='git for-each-ref --format "%(refname:short) %(upstream:trackshort)" r
 # mvn
 alias ddu='mvn versions:display-dependency-updates'
 alias dpu='mvn versions:display-plugin-updates'
+
+# kubectl
+alias kc=kubectl
