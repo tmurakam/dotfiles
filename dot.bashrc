@@ -151,7 +151,7 @@ export LESSGLOBALTAGS=global
 [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 # kubectl
-if [ -s "/usr/local/bin/kubectl" ]; then
+if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
     source <(kubectl completion bash)
     alias k=kubectl
     complete -o default -F __start_kubectl k
