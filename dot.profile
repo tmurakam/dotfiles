@@ -27,6 +27,6 @@ export LANG="ja_JP.utf8"
 
 # keychain, see http://www.gentoo.org/doc/ja/keychain-guide.xml
 #
-if [ -x /usr/bin/keychain ]; then
-   eval `/usr/bin/keychain --eval --timeout 28800`
-fi
+#if [ -x /usr/bin/keychain ]; then
+#   eval `/usr/bin/keychain --eval --timeout 28800`
+#fi

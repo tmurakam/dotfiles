@@ -24,8 +24,20 @@ if [ -e $HOME/android-sdk ]; then
     export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 fi
 
-if [ -e /usr/bin/keychain ]; then
-   eval `/usr/bin/keychain --eval --timeout 28800`
+#if [ -e /usr/bin/keychain ]; then
+#   eval `/usr/bin/keychain --eval --timeout 28800`
+#fi
+
+# ssh-agent
+SSH_AGENT_FILE=$HOME/.ssh/agent
+if [ -e $SSH_AGENT_FILE ]; then
+    source $SSH_AGENT_FILE >/dev/null 2>&1
+fi
+if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
+    killall ssh-agent
+    echo "Start up new ssh-agent"
+    ssh-agent -t 28800 > $SSH_AGENT_FILE
+    source $SSH_AGENT_FILE >/dev/null 2>&1
 fi
 
 # anyenv
