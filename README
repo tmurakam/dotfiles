@@ -42,7 +42,12 @@ crontab からの起動時などもこれ。
 
 この場合、PATH や rvm の設定が行われない。
 
+○tmux on rhel7/centos7
 
-
-
-
+sudo yum install libevent-devel
+git clone https://github.com/tmux/tmux
+cd tmux
+./autogen.sh
+./configure
+make
+sudo make install

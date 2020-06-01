@@ -12,7 +12,7 @@ fi
 
 umask 022
 
-stty erase ^H
+#stty erase ^H
 
 if [ -d "$HOME/bin" ]; then
    PATH=$HOME/bin:$PATH
