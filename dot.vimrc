@@ -1,13 +1,17 @@
 :filetype plugin on
 :filetype indent on
 
-set autoindent
+set smartindent
 
 " タブ幅の設定
 set expandtab
-set tabstop=8
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+" 行番号表示
+set number
+set relativenumber
 
 " ファイル名表示
 set statusline=%F
