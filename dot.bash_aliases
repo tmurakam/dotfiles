@@ -32,7 +32,8 @@ alias gf='global -xf'
 #alias xe='~/Morphon_XML-Editor_3.1.4/Morphon_XML-Editor_3.1.4'
 
 #alias ng='emacs -nw'
-alias e='emacs -nw'
+alias e=vi
+alias ee='emacs -nw'
 alias euc2utf8='iconv -f euc-jp -t utf-8'
 
 # git

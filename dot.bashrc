@@ -139,7 +139,8 @@ fi
 #esac 
 
 # enviroment variables
-export EDITOR="emacs -nw"
+export EDITOR=vi
+#export EDITOR="emacs -nw"
 export PAGER=less
 
 #ulimit -c 100000000
