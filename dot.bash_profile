@@ -94,8 +94,8 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
-# Jabba
-[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+# Jabba: deprecated, use sdkman
+#[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 # jenv
 if [ -e $HOME/.jenv ]; then

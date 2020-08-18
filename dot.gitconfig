@@ -19,3 +19,5 @@
 	trustExitCode = true
 [http]
 	sslVerify = false
+[pull]
+	ff = only
