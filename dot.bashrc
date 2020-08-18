@@ -139,8 +139,8 @@ fi
 #esac 
 
 # enviroment variables
-export EDITOR=vi
-#export EDITOR="emacs -nw"
+#export EDITOR=vi
+export EDITOR="emacs -nw"
 export PAGER=less
 
 #ulimit -c 100000000
@@ -148,8 +148,8 @@ export PAGER=less
 # less for global
 export LESSGLOBALTAGS=global
 
-# Jabba
-[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+# Jabba: deprecated, use sdkman
+#[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 # kubectl
 if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
@@ -157,6 +157,10 @@ if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
     alias k=kubectl
     complete -o default -F __start_kubectl k
 fi
+if [ -d ${HOME}/.krew/bin ]; then
+    export PATH="${PATH}:${HOME}/.krew/bin"
+fi
+
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
