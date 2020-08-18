@@ -32,8 +32,8 @@ alias gf='global -xf'
 #alias xe='~/Morphon_XML-Editor_3.1.4/Morphon_XML-Editor_3.1.4'
 
 #alias ng='emacs -nw'
-alias e=vi
-alias ee='emacs -nw'
+#alias e=vi
+alias e='emacs -nw'
 alias euc2utf8='iconv -f euc-jp -t utf-8'
 
 # git
@@ -45,4 +45,13 @@ alias ddu='mvn versions:display-dependency-updates'
 alias dpu='mvn versions:display-plugin-updates'
 
 # kubectl
-alias kc=kubectl
+alias ka='kubectl get all -o wide'
+alias kp='kubectl get pod -o wide'
+alias kd='kubectl get deployment -o wide'
+alias ks='kubectl get service -o wide'
+
+alias kdp='kubectl describe pod'
+alias kdd='kubectl describe deployment'
+alias kds='kubectl describe service'
+
+alias kns='kubectl config set-context --current --namespace'
