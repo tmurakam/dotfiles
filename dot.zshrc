@@ -31,7 +31,10 @@ setopt complete_aliases
 # Prompt
 autoload colors
 colors
-export PROMPT="%B%{${fg[blue]}%}[%T]%n@%m %%%{${reset_color}%}%b "
+#export PROMPT="%B%{${fg[green]}%}[%T]%n@%m %%%{${reset_color}%}%b "
+#export PROMPT="%B%{${fg[green]}%}%n@%m:%{${reset_color}%}%b$ "
+export PROMPT="%B%{${fg[green]}%}%n@%m:%{${reset_color}%}%b%~
+$ "
 export RPROMPT="%B%{${fg[red]}%}[%~]%{${reset_color}%}%b "
 export PROMPT2="%_%%"
 
