@@ -17,8 +17,8 @@ compinit
 zstyle ':completion:*' list-colors ''
 
 # 補完を無効化するコマンド
-compdef -d svn
-compdef -d git
+#compdef -d svn
+#compdef -d git
 
 ##############################################################################
 # aliases
@@ -27,9 +27,6 @@ setopt complete_aliases
 . ~/.bash_aliases
 
 ##############################################################################
-
-# Locale
-export LANG=ja_JP.UTF-8
 
 # Prompt
 autoload colors
@@ -65,22 +62,33 @@ setopt list_packed
 
 #########################################
 # enviroment variables
-export EDITOR="emacs -nw"
-export PAGER=less
 
 ulimit -c 100000000
 
-# Jabba
-#[ -s "/Users/tmurakam/.jabba/jabba.sh" ] && source "/Users/tmurakam/.jabba/jabba.sh"
+#########################################
+# Load some scripts
+
+# Android
+if [ -d $HOME/android-sdk-linux ]; then
+    export ANDROID_HOME=$HOME/android-sdk-linux
+    export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+fi
+
+# Jabba: deprecated, use sdkman
+#[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 # kubectl
 if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
     source <(kubectl completion zsh)
-    #alias k=kubectl
-    #complete -o default -F __start_kubectl k
+    alias k=kubectl
+    complete -o default -F __start_kubectl k
 fi
+#if [ -d ${HOME}/.krew/bin ]; then
+#    export PATH="${PATH}:${HOME}/.krew/bin"
+#fi
+
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
