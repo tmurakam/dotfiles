@@ -24,7 +24,7 @@ zstyle ':completion:*' list-colors ''
 # aliases
 
 setopt complete_aliases
-. ~/.bash_aliases
+. ~/.aliases
 
 ##############################################################################
 
