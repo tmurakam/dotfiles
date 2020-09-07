@@ -7,12 +7,7 @@ if [ -f "$HOME/.bashrc" ]; then
    . "$HOME/.bashrc"
 fi
 
-# MacPorts
-#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-
 umask 022
-
-#stty erase ^H
 
 if [ -d "$HOME/bin" ]; then
    PATH=$HOME/bin:$PATH
@@ -23,10 +18,6 @@ if [ -e $HOME/android-sdk ]; then
     export ANDROID_HOME=$HOME/android-sdk
     export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 fi
-
-#if [ -e /usr/bin/keychain ]; then
-#   eval `/usr/bin/keychain --eval --timeout 28800`
-#fi
 
 # ssh-agent
 SSH_AGENT_FILE=$HOME/.ssh/agent
@@ -80,12 +71,6 @@ fi
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=true
-
-
-#if [ -e $HOME/virtualenv/default ]; then
-#    export VIRTUAL_ENV_DISABLE_PROMPT=1
-#    . $HOME/virtualenv/default/bin/activate
-#fi
 
 # iTerm2 plugin
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

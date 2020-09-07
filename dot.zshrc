@@ -78,15 +78,6 @@ ulimit -c 100000000
 #########################################
 # Load some scripts
 
-# Android
-if [ -d $HOME/android-sdk-linux ]; then
-    export ANDROID_HOME=$HOME/android-sdk-linux
-    export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-fi
-
-# Jabba: deprecated, use sdkman
-#[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
-
 # kubectl
 if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
     source <(kubectl completion zsh)
