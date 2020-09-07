@@ -21,6 +21,23 @@ alias grep='grep -i'
 alias tounix='nkf -w -Lu -d --in-place'
 alias todos='nkf -s -Lw -c --in-place'
 
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# for Mac (Darwin)
+if [ `uname` = "Darwin" ]; then
+    alias ls='ls -G'
+fi
+
 # global
 alias gx='global -x'
 alias gr='global -xr'
@@ -55,3 +72,4 @@ alias kdd='kubectl describe deployment'
 alias kds='kubectl describe service'
 
 alias kns='kubectl config set-context --current --namespace'
+

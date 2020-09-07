@@ -29,11 +29,18 @@ setopt complete_aliases
 ##############################################################################
 
 # Prompt
+# Memo:
+#   Username: %n
+#   Hostname: %m
+#   Directory: %~
+#   Color: %{${fg[COLOR]}%}, %{${reset_color}%}
+#   Bold/Unbold: %B, %b
+
 autoload colors
 colors
 #export PROMPT="%B%{${fg[green]}%}[%T]%n@%m %%%{${reset_color}%}%b "
 #export PROMPT="%B%{${fg[green]}%}%n@%m:%{${reset_color}%}%b$ "
-export PROMPT="%B%{${fg[green]}%}%n@%m:%{${reset_color}%}%b%~
+export PROMPT="%{${fg[green]}%}%n@%m:%{${reset_color}%}%~
 $ "
 export RPROMPT="%B%{${fg[red]}%}[%~]%{${reset_color}%}%b "
 export PROMPT2="%_%%"
