@@ -19,7 +19,7 @@ fi
 if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
     #killall ssh-agent
     echo "Start up new ssh-agent"
-    ssh-agent -t 28800 > $SSH_AGENT_FILE
+    ssh-agent -t 604800 > $SSH_AGENT_FILE
     chmod 600 $SSH_AGENT_FILE
     source $SSH_AGENT_FILE >/dev/null 2>&1
 fi
