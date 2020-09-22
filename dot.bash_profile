@@ -20,8 +20,8 @@ if [ -e $HOME/android-sdk ]; then
 fi
 
 # keychain
-#eval `~/dotfiles/bin/keychain --eval --agents ssh id_rsa`
-eval `~/dotfiles/bin/keychain --eval`
+#eval $(~/dotfiles/bin/keychain --eval --timeout 1440 --agents ssh id_rsa)
+eval $(~/dotfiles/bin/keychain --eval --timeout 1440)
 
 # ssh-agent
 #SSH_AGENT_FILE=$HOME/.ssh/agent
