@@ -10,19 +10,23 @@ export LANG="ja_JP.utf8"
 export EDITOR="emacs -nw"
 export PAGER=less
 
+# keychain
+#eval `~/dotfiles/bin/keychain --eval --agents ssh id_rsa`
+eval `~/dotfiles/bin/keychain --eval`
+
 # ssh-agent
-SSH_AGENT_FILE=$HOME/.ssh/agent
-if [ -e $SSH_AGENT_FILE ]; then
-    echo "Load ssh-agent config"
-    source $SSH_AGENT_FILE >/dev/null 2>&1
-fi
-if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
-    #killall ssh-agent
-    echo "Start up new ssh-agent"
-    ssh-agent -t 604800 > $SSH_AGENT_FILE
-    chmod 600 $SSH_AGENT_FILE
-    source $SSH_AGENT_FILE >/dev/null 2>&1
-fi
+#SSH_AGENT_FILE=$HOME/.ssh/agent
+#if [ -e $SSH_AGENT_FILE ]; then
+#    echo "Load ssh-agent config"
+#    source $SSH_AGENT_FILE >/dev/null 2>&1
+#fi
+#if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
+#    #killall ssh-agent
+#    echo "Start up new ssh-agent"
+#    ssh-agent -t 604800 > $SSH_AGENT_FILE
+#    chmod 600 $SSH_AGENT_FILE
+#    source $SSH_AGENT_FILE >/dev/null 2>&1
+#fi
 
 # Android
 if [ -d $HOME/android-sdk-linux ]; then
