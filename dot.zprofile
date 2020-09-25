@@ -34,20 +34,6 @@ if [ -d $HOME/android-sdk-linux ]; then
     export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 fi
 
-# RVM
-. $HOME/dotfiles/init-rvm.sh
-
-# rbenv
-if [ -d "$HOME/.rbenv/bin" ]; then
-    export PATH=$HOME/.rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-elif [ -d "/usr/local/rbenv" ]; then
-    export PATH=/usr/local/rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-elif [ -x "/usr/local/bin/rbenv" ]; then # homebrew
-    eval "$(rbenv init -)"
-fi
-
 # sdkman
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"

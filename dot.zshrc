@@ -88,8 +88,21 @@ fi
 #    export PATH="${PATH}:${HOME}/.krew/bin"
 #fi
 
-
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# RVM
+. $HOME/dotfiles/init-rvm.sh
+
+# rbenv
+if [ -d "$HOME/.rbenv/bin" ]; then
+    export PATH=$HOME/.rbenv/bin:$PATH
+    eval "$(rbenv init -)"
+elif [ -d "/usr/local/rbenv" ]; then
+    export PATH=/usr/local/rbenv/bin:$PATH
+    eval "$(rbenv init -)"
+elif [ -x "/usr/local/bin/rbenv" ]; then # homebrew
+    eval "$(rbenv init -)"
+fi
