@@ -12,7 +12,7 @@ export PAGER=less
 
 # keychain
 #eval $(~/dotfiles/bin/keychain --eval --timeout 1440 --agents ssh id_rsa)
-eval $(~/dotfiles/bin/keychain --eval --timeout 1440)
+eval $(~/dotfiles/bin/keychain --eval --timeout 10080)
 
 # ssh-agent
 #SSH_AGENT_FILE=$HOME/.ssh/agent
