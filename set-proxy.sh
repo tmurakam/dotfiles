@@ -11,7 +11,7 @@ function set-proxy
 
     export https_proxy=$http_proxy
     export ftp_proxy=$http_proxy
-    export no_proxy=.nec.co.jp,.nec.com
+    #export no_proxy=
 
     # for curl
     export HTTPS_PROXY=$http_proxy
