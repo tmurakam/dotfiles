@@ -7,7 +7,6 @@ function set-proxy
         export http_proxy=`cat $HOME/.proxy_server`
     else
         return
-        #export http_proxy=http://proxygate2.nic.nec.co.jp:8080/
     fi
 
     export https_proxy=$http_proxy
