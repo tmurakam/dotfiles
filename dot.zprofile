@@ -34,6 +34,11 @@ if [ -d $HOME/android-sdk-linux ]; then
     export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 fi
 
+# Homebrew
+if [ -d /opt/homebrew/bin ]; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 # sdkman
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
