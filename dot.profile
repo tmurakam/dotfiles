@@ -21,6 +21,7 @@ fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
+fi
 
 if [ -e /etc/redhat-release ]; then
     export LANG="ja_JP.utf8"
