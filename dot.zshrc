@@ -118,3 +118,6 @@ elif [ -e $HOME/.venv/default ]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     . $HOME/.venv/default/bin/activate
 fi
+
+# added by travis gem
+[ ! -s /Users/tmurakam/.travis/travis.sh ] || source /Users/tmurakam/.travis/travis.sh
