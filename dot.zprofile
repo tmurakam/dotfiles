@@ -5,7 +5,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-export LANG="ja_JP.utf8"
+if [ -e /etc/redhat-release ]; then
+    export LANG="ja_JP.utf8"
+else
+    export LANG="ja_JP.UTF-8"
+fi
 
 export EDITOR="emacs -nw"
 export PAGER=less

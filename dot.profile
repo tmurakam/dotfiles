@@ -21,9 +21,12 @@ fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
-fi
 
-export LANG="ja_JP.utf8"
+if [ -e /etc/redhat-release ]; then
+    export LANG="ja_JP.utf8"
+else
+    export LANG="ja_JP.UTF-8"
+fi
 
 # keychain, see http://www.gentoo.org/doc/ja/keychain-guide.xml
 #
