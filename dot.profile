@@ -1,14 +1,8 @@
 #!/bin/sh
 
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+# .profile
 
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
+umask 022
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -17,6 +11,10 @@ if [ -n "$BASH_VERSION" ]; then
 	. "$HOME/.bashrc"
     fi
 fi
+
+# keychain
+#eval $(~/dotfiles/bin/keychain --eval --timeout 1440 --agents ssh id_rsa)
+eval $(~/dotfiles/bin/keychain --eval --timeout 1440)
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -29,8 +27,8 @@ else
     export LANG="ja_JP.UTF-8"
 fi
 
-# keychain, see http://www.gentoo.org/doc/ja/keychain-guide.xml
-#
-#if [ -x /usr/bin/keychain ]; then
-#   eval `/usr/bin/keychain --eval --timeout 28800`
-#fi
+# Android SDK
+if [ -e $HOME/android-sdk ]; then
+    export ANDROID_HOME=$HOME/android-sdk
+    export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+fi
