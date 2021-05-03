@@ -14,7 +14,10 @@ fi
 
 # keychain
 #eval $(~/dotfiles/bin/keychain --eval --timeout 1440 --agents ssh id_rsa)
-eval $(~/dotfiles/bin/keychain --eval --timeout 1440)
+case $- in
+    *i*) eval $(~/dotfiles/bin/keychain --eval --timeout 1440);;  # interactive shell
+    *) eval $(~/dotfiles/bin/keychain --eval --timeout 1440 >/dev/null 2>/dev/null);;
+esac
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
