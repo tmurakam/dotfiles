@@ -6,7 +6,7 @@
 
 # source profile like .bashrc
 if [ -f /etc/profile ]; then
-	source /etc/profile
+    source /etc/profile
 fi
 
 fpath=(~/zsh/functions ${fpath})
@@ -78,37 +78,8 @@ ulimit -c 100000000
 #########################################
 # Load some scripts
 
-# Android
-if [ -d $HOME/android-sdk-linux ]; then
-    export ANDROID_HOME=$HOME/android-sdk-linux
-    export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-fi
-
-# Homebrew
-if [ -d /opt/homebrew/bin ]; then
-    eval $(/opt/homebrew/bin/brew shellenv)
-fi
-
-# sdkman
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
-# pipenv
-export PIPENV_VENV_IN_PROJECT=true
-
-# Go
-export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
-
-# jenv
-if [ -e $HOME/.jenv ]; then
-    export PATH=$HOME/.jenv/bin:$PATH
-    eval "$(jenv init -)"
-fi
-
-# Rust
-if [ -e $HOME/.cargo ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
+if [ -e ~/dotfiles/dot.cmnrc ]; then
+    . ~/dotfiles/dot.cmnrc
 fi
 
 # kubectl
@@ -117,40 +88,3 @@ if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
     alias k=kubectl
     complete -o default -F __start_kubectl k
 fi
-#if [ -d ${HOME}/.krew/bin ]; then
-#    export PATH="${PATH}:${HOME}/.krew/bin"
-#fi
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# RVM
-. $HOME/dotfiles/init-rvm.sh
-
-# rbenv
-if [ -d "$HOME/.rbenv/bin" ]; then
-    export PATH=$HOME/.rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-elif [ -d "/usr/local/rbenv" ]; then
-    export PATH=/usr/local/rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-elif [ -x "/usr/local/bin/rbenv" ]; then # homebrew
-    eval "$(rbenv init -)"
-fi
-
-# pyenv / venv
-if [ -e "$HOME/.pyenv" ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-fi
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-elif [ -e $HOME/.venv/default ]; then
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
-    . $HOME/.venv/default/bin/activate
-fi
-
-# added by travis gem
-[ ! -s /Users/tmurakam/.travis/travis.sh ] || source /Users/tmurakam/.travis/travis.sh

@@ -81,103 +81,23 @@ fi
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
     if [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion
+        . /etc/bash_completion
     fi
     # homebrew
     if [ -d /usr/local/etc/bash_completion.d ]; then
-	for f in /usr/local/etc/bash_completion.d/*; do
-	    . $f
-	done
+    for f in /usr/local/etc/bash_completion.d/*; do
+        . $f
+    done
     fi
 fi
-
-
-#####################################################################
-# Environment variables
-
-# Android
-if [ -d $HOME/android-sdk-linux ]; then
-    export ANDROID_HOME=$HOME/android-sdk-linux
-    export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-fi
-
-# commands
-up() { eval `~/dotfiles/upto $1`; }
 
 if [ -f $HOME/.bashrc_local ]; then
     . $HOME/.bashrc_local
 fi
 
-# Show current directory to terminal
-#case "${TERM}" in
-#kterm*|xterm)
-#    precmd() {
-#        echo -ne "\e]0;${USER}@${HOST%%.*}:${PWD}\007"
-#    }
-#    ;;
-#esac 
-
-# enviroment variables
-#export EDITOR=vi
-export EDITOR="emacs -nw"
-export PAGER=less
-
-#ulimit -c 100000000
-   
-# less for global
-export LESSGLOBALTAGS=global
-
-# RVM
-if [ -e $HOME/dotfiles/init-rvm.sh ]; then
-    . $HOME/dotfiles/init-rvm.sh
-fi
-
-# rbenv
-if [ -d "$HOME/.rbenv/bin" ]; then
-    export PATH=$HOME/.rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-elif [ -d "/usr/local/rbenv" ]; then
-    export PATH=/usr/local/rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-elif [ -x "/usr/local/bin/rbenv" ]; then # homebrew
-    eval "$(rbenv init -)"
-fi
-
-# sdkman
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
-# pyenv / venv
-if [ -e "$HOME/.pyenv" ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-fi
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-elif [ -e $HOME/.venv/default ]; then
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
-    . $HOME/.venv/default/bin/activate
-fi
-
-# pipenv
-export PIPENV_VENV_IN_PROJECT=true
-
-# iTerm2 plugin
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-# Go
-export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
-
-# jenv
-if [ -e $HOME/.jenv ]; then
-    export PATH=$HOME/.jenv/bin:$PATH
-    eval "$(jenv init -)"
-fi
-
-# Rust
-if [ -e $HOME/.cargo ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
+# common
+if [ -e ~/dotfiles/dot.cmnrc ]; then
+    . ~/dotfiles/dot.cmnrc
 fi
 
 # kubectl
@@ -186,14 +106,3 @@ if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
     alias k=kubectl
     complete -o default -F __start_kubectl k
 fi
-if [ -d ${HOME}/.krew/bin ]; then
-    export PATH="${PATH}:${HOME}/.krew/bin"
-fi
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# added by travis gem
-[ ! -s /Users/tmurakam/.travis/travis.sh ] || source /Users/tmurakam/.travis/travis.sh
