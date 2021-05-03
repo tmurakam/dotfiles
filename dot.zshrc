@@ -78,6 +78,39 @@ ulimit -c 100000000
 #########################################
 # Load some scripts
 
+# Android
+if [ -d $HOME/android-sdk-linux ]; then
+    export ANDROID_HOME=$HOME/android-sdk-linux
+    export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+fi
+
+# Homebrew
+if [ -d /opt/homebrew/bin ]; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
+# sdkman
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+# pipenv
+export PIPENV_VENV_IN_PROJECT=true
+
+# Go
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
+
+# jenv
+if [ -e $HOME/.jenv ]; then
+    export PATH=$HOME/.jenv/bin:$PATH
+    eval "$(jenv init -)"
+fi
+
+# Rust
+if [ -e $HOME/.cargo ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # kubectl
 if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
     source <(kubectl completion zsh)
