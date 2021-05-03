@@ -127,8 +127,58 @@ export PAGER=less
 # less for global
 export LESSGLOBALTAGS=global
 
-# Jabba: deprecated, use sdkman
-#[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+# RVM
+if [ -e $HOME/dotfiles/init-rvm.sh ]; then
+    . $HOME/dotfiles/init-rvm.sh
+fi
+
+# rbenv
+if [ -d "$HOME/.rbenv/bin" ]; then
+    export PATH=$HOME/.rbenv/bin:$PATH
+    eval "$(rbenv init -)"
+elif [ -d "/usr/local/rbenv" ]; then
+    export PATH=/usr/local/rbenv/bin:$PATH
+    eval "$(rbenv init -)"
+elif [ -x "/usr/local/bin/rbenv" ]; then # homebrew
+    eval "$(rbenv init -)"
+fi
+
+# sdkman
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+# pyenv / venv
+if [ -e "$HOME/.pyenv" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+elif [ -e $HOME/.venv/default ]; then
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    . $HOME/.venv/default/bin/activate
+fi
+
+# pipenv
+export PIPENV_VENV_IN_PROJECT=true
+
+# iTerm2 plugin
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# Go
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
+
+# jenv
+if [ -e $HOME/.jenv ]; then
+    export PATH=$HOME/.jenv/bin:$PATH
+    eval "$(jenv init -)"
+fi
+
+# Rust
+if [ -e $HOME/.cargo ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 # kubectl
 if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
@@ -139,7 +189,6 @@ fi
 if [ -d ${HOME}/.krew/bin ]; then
     export PATH="${PATH}:${HOME}/.krew/bin"
 fi
-
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
