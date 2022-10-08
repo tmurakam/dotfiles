@@ -73,3 +73,5 @@ alias kds='kubectl describe service'
 
 alias kns='kubectl config set-context --current --namespace'
 
+alias mvns='mvn -DskipTests=true -Dskip.unit.tests=true -Dfindbugs.skip=true -Dmaven.test.skip=true -Ddependency-scan.skip=true'
+

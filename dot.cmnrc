@@ -89,3 +89,11 @@ export NVM_DIR="$HOME/.nvm"
 
 # added by travis gem
 [ ! -s /Users/tmurakam/.travis/travis.sh ] || source /Users/tmurakam/.travis/travis.sh
+
+# goenv
+if [ -d ${HOME}/.goenv ]; then
+    export GOENV_ROOT="$HOME/.goenv"
+    export PATH="$GOENV_ROOT/bin:$PATH"
+    eval "$(goenv init -)"
+fi
+
