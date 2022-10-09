@@ -91,6 +91,9 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# Fix 'ls' colors to improve readability.
+export LS_COLORS="${LS_COLORS}:di=01;35"
+
 if [ -f $HOME/.bashrc_local ]; then
     . $HOME/.bashrc_local
 fi
