@@ -35,3 +35,5 @@ if [ -e $HOME/android-sdk ]; then
     export ANDROID_HOME=$HOME/android-sdk
     export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 fi
+
+[ -s "/Users/tmurakam/.web3j/source.sh" ] && source "/Users/tmurakam/.web3j/source.sh"

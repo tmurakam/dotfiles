@@ -88,3 +88,5 @@ if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
     alias k=kubectl
     complete -o default -F __start_kubectl k
 fi
+
+[ -s "/Users/tmurakam/.web3j/source.sh" ] && source "/Users/tmurakam/.web3j/source.sh"
