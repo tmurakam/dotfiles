@@ -1,3 +1,4 @@
+#!/bin/zsh
 #
 # .zshrc is sourced in interactive shells.
 # It should contain commands to set up aliases,
@@ -78,6 +79,11 @@ ulimit -c 100000000
 #########################################
 # Load some scripts
 
+# Alias definitions.
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
+
 if [ -e ~/dotfiles/dot.cmnrc ]; then
     . ~/dotfiles/dot.cmnrc
 fi
@@ -86,7 +92,7 @@ fi
 if [ -s "/usr/bin/kubectl" -o -s "/usr/local/bin/kubectl" ]; then
     source <(kubectl completion zsh)
     alias k=kubectl
-    complete -o default -F __start_kubectl k
+    #complete -o default -F __start_kubectl k
 fi
 
 [ -s "/Users/tmurakam/.web3j/source.sh" ] && source "/Users/tmurakam/.web3j/source.sh"
