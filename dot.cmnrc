@@ -34,13 +34,12 @@ if [ -e $HOME/dotfiles/init-rvm.sh ]; then
 fi
 
 # rbenv
-if [ -d "$HOME/.rbenv/bin" ]; then
-    export PATH=$HOME/.rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-elif [ -d "/usr/local/rbenv" ]; then
-    export PATH=/usr/local/rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-elif [ -x "/usr/local/bin/rbenv" ]; then # homebrew
+if [ -d "$HOME/.rbenv" ]; then
+    if [ -d "$HOME/.rbenv/bin" ]; then
+        export PATH=$HOME/.rbenv/bin:$PATH
+    elif [ -d "/usr/local/rbenv" ]; then
+        export PATH=/usr/local/rbenv/bin:$PATH
+    fi
     eval "$(rbenv init -)"
 fi
 
@@ -97,3 +96,5 @@ if [ -d ${HOME}/.goenv ]; then
     eval "$(goenv init -)"
 fi
 
+# web3j
+[ -s "$HOME/.web3j/source.sh" ] && source "$HOME/.web3j/source.sh"
