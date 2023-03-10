@@ -76,6 +76,17 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
+# Fix 'ls' colors to improve readability.
+export LS_COLORS="${LS_COLORS}:di=01;35"
+
+if [ -f $HOME/.bashrc_local ]; then
+    . $HOME/.bashrc_local
+fi
+# common
+if [ -e ~/dotfiles/dot.cmnrc ]; then
+    . ~/dotfiles/dot.cmnrc
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -85,22 +96,11 @@ if ! shopt -oq posix; then
     fi
     # homebrew
     if [ -d /usr/local/etc/bash_completion.d ]; then
-    for f in /usr/local/etc/bash_completion.d/*; do
-        . $f
-    done
+        for f in /usr/local/etc/bash_completion.d/*; do
+            #echo "$f"
+            . $f
+        done
     fi
-fi
-
-# Fix 'ls' colors to improve readability.
-export LS_COLORS="${LS_COLORS}:di=01;35"
-
-if [ -f $HOME/.bashrc_local ]; then
-    . $HOME/.bashrc_local
-fi
-
-# common
-if [ -e ~/dotfiles/dot.cmnrc ]; then
-    . ~/dotfiles/dot.cmnrc
 fi
 
 # kubectl
