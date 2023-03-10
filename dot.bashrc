@@ -95,8 +95,8 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
     # homebrew
-    if [ -d /usr/local/etc/bash_completion.d ]; then
-        for f in /usr/local/etc/bash_completion.d/*; do
+    if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
+        for f in $(brew --prefix)/etc/bash_completion.d/*; do
             #echo "$f"
             . $f
         done
