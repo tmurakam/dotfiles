@@ -27,6 +27,11 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 # Android
 if [ -d $HOME/android-sdk-linux ]; then
     export ANDROID_HOME=$HOME/android-sdk-linux
+fi
+if [ -d $HOME/Android/android-sdk-macosx ]; then
+    export ANDROID_HOME=$HOME/Androidandroid-sdk-macosx
+fi
+if [ -n "${ANDROID_HOME}" ]; then
     export PATH=$PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 fi
 
@@ -100,3 +105,8 @@ fi
 
 # web3j
 [ -s "$HOME/.web3j/source.sh" ] && source "$HOME/.web3j/source.sh"
+
+# flutter
+if [ -d "${HOME}/local/flutter/bin" ]; then
+    export PATH="$PATH:${HOME}/local/flutter/bin"
+fi
