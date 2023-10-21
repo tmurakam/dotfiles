@@ -73,5 +73,7 @@ alias kds='kubectl describe service'
 
 alias kns='kubectl config set-context --current --namespace'
 
-alias mvns='mvn -DskipTests=true -Dskip.unit.tests=true -Dfindbugs.skip=true -Dspotbugs.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true -Dmaven.test.skip=true -Ddependency-check.skip=true'
-
+MVN_SKIPS='-Dfindbugs.skip=true -Dspotbugs.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true -Ddependency-check.skip=true'
+alias mvnt="mvn $MVN_SKIPS"
+alias mvns="mvn $MVN_SKIPS -DskipTests=true -Dskip.unit.tests=true -Dmaven.test.skip=true"
+alias checkstyle="mvn -Dcheckstyle.skip=false -Dfindbugs.skip=true -Dspotbugs.skip=true -Dmaven.javadoc.skip=true -Ddependency-check.skip=true -DskipTests=true -Dskip.unit.tests=true -Dmaven.test.skip=true test-compile install"
